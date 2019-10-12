@@ -74,7 +74,7 @@ const addAppearanceEffect = (x: number, y: number) => {
 const addEnemy = (slot: EnemySlot.Unit) => {
   const { x, y } = slot;
   addAppearanceEffect(x, y);
-  Timer.Set.add(
+  Timer.Set.addTimer(
     timerSet,
     Timer.create(60, undefined, () => {
       const index = Core.useEnemy(x, y, ActorTypes.randomEnemy());
