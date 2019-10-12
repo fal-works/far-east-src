@@ -191,7 +191,7 @@ export const runAndDraw = (group: Unit) => {
 };
 
 export const reset = (group: Unit) => {
-  const { active, run, drawGraphics } = group.soa.data;
+  const { active, run, drawGraphics, drawGraphicsDamaged } = group.soa.data;
 
   const emptyFunction = () => {};
 
@@ -199,6 +199,39 @@ export const reset = (group: Unit) => {
     active[i] = false;
     run[i] = emptyFunction;
     drawGraphics[i] = emptyFunction;
+    drawGraphicsDamaged[i] = null;
+  }
+
+  group.startIndex = Infinity;
+  group.endIndex = 0;
+
+  return group;
+};
+
+export const breakActors = (
+  group: Unit,
+  fireParticle: (x: number, y: number) => void
+) => {
+  const {
+    active,
+    x,
+    y,
+    run,
+    drawGraphics,
+    drawGraphicsDamaged
+  } = group.soa.data;
+
+  const emptyFunction = () => {};
+
+  for (let i = 0, len = group.soa.length; i < len; i += 1) {
+    if (!active[i]) continue;
+
+    fireParticle(x[i], y[i]);
+
+    active[i] = false;
+    run[i] = emptyFunction;
+    drawGraphics[i] = emptyFunction;
+    drawGraphicsDamaged[i] = null;
   }
 
   group.startIndex = Infinity;

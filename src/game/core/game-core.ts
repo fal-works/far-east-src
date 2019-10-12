@@ -119,3 +119,7 @@ export const checkEnemyBulletCollision = (
 
   Actor.Group.checkCollision(enemyBulletGroup, playerGroup, onHitPlayer);
 };
+
+export const breakEnemyBullets = (
+  fireParticle: (x: number, y: number) => void
+) => Actor.Group.breakActors(enemyBulletGroup, fireParticle);

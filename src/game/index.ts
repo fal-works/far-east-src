@@ -154,6 +154,10 @@ const onHitPlayer: Actor.Group.OnCollideCallback = (
   }
 
   Sound.playDamageSound();
+
+  Core.breakEnemyBullets((x, y) =>
+    Core.fireParticle(x, y, 0, 0, ActorTypes.randomParticle())
+  );
 };
 
 const drawLife = () => {
