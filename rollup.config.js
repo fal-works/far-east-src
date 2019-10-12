@@ -3,7 +3,7 @@ import typescript from "rollup-plugin-typescript2";
 
 // ---- settings ------------
 
-const name = "far-east";
+const repositoryURL = "https://github.com/fal-works/far-east-src";
 const title = "Far East";
 const version = "0.1.0";
 const bundleFalWorksLibraries = true;
@@ -42,7 +42,7 @@ const bundledLibraries = bundleFalWorksLibraries
 const bannerComment =
   `/**
  * ${title}.
- * https://github.com/fal-works/p5js-sketches/tree/master/${name}
+ * Source code in TypeScript: ${repositoryURL}
  * ${bundledLibraries}
  * @copyright 2019 FAL
  * @version ${version}
