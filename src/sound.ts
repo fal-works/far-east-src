@@ -1,6 +1,8 @@
 import p5 from "p5";
 import "p5/lib/addons/p5.sound";
 
+import { ENABLE_MUSIC } from "./settings";
+
 let volume = 0;
 let music: p5.SoundFile;
 let gunSound: p5.SoundFile;
@@ -24,10 +26,12 @@ export const loadSounds = (
   const p5Any = p as any;
   const p5Sound = p5Any as p5.SoundFile;
 
-  p5Any.soundFormats("ogg", "mp3");
+  if (ENABLE_MUSIC) {
+    p5Any.soundFormats("ogg", "mp3");
 
-  music = p5Sound.loadSound(paths.music);
-  music.setLoop(true);
+    music = p5Sound.loadSound(paths.music);
+    music.setLoop(true);
+  }
 
   p5Any.soundFormats("wav");
 
@@ -45,11 +49,16 @@ export const loadSounds = (
   /* eslint-enable */
 };
 
-const playMusic = () => music.play();
-const stopMusic = () => music.stop();
+const playMusic = () => {
+  if (ENABLE_MUSIC) music.play();
+};
+
+const stopMusic = () => {
+  if (ENABLE_MUSIC) music.stop();
+};
 
 export const setVolume = (vol: number) => {
-  music.setVolume(vol);
+  if (ENABLE_MUSIC) music.setVolume(vol);
   gunSound.setVolume(0.25 * vol);
   bombSound.setVolume(0.65 * vol);
   preAppearanceSound.setVolume(0.3 * vol);

@@ -17,3 +17,8 @@ export const LOGICAL_CANVAS_SIZE: RectangleSize.Unit = {
   width: 800,
   height: 800
 };
+
+/**
+ * If music should be enabled.
+ */
+export const ENABLE_MUSIC = true;
