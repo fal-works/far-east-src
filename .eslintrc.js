@@ -26,6 +26,7 @@ module.exports = {
   ],
   "rules": {
     "no-console": "off",
+    "no-prototype-builtins": "warn",
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/no-parameter-properties": "off",
     "@typescript-eslint/class-name-casing": "warn"
