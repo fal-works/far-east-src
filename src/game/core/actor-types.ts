@@ -234,7 +234,7 @@ onSetup.push(p => {
       const directionToPlayer = GameCore.getDirectionToPlayer(x, y);
       data.rotationAngle[i] = directionToPlayer;
 
-      if (frameCount % 120 < 60) return;
+      if (frameCount % 90 < 45) return;
 
       if (frameCount % 4 === 0) {
         const angle = 0.008 * frameCount;
