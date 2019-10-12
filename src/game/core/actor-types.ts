@@ -169,11 +169,6 @@ onSetup.push(p => {
       keepInScreen(data, i);
 
       const { vx, vy } = data;
-      vx[i] = 0;
-      vy[i] = 0;
-
-      if (!p.keyIsPressed) return;
-
       const moveDirection = MoveKeys.unitVector;
       vx[i] = 10 * moveDirection.x;
       vy[i] = 10 * moveDirection.y;
