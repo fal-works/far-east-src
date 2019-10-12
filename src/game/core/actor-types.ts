@@ -146,17 +146,18 @@ onSetup.push(p => {
     10 // LF
   ];
 
+  const margin = 30;
   const keepInScreen: Actor.RunCallback = (data, i) => {
     const x = data.x[i];
     const y = data.y[i];
 
     const { width, height } = canvas.logicalSize;
 
-    if (x < 0) data.x[i] = 0;
-    else if (x >= width) data.x[i] = width - 1;
+    if (x < margin) data.x[i] = margin;
+    else if (x >= width - margin) data.x[i] = width - margin - 1;
 
-    if (y < 0) data.y[i] = 0;
-    else if (y >= height) data.y[i] = height - 1;
+    if (y < margin) data.y[i] = margin;
+    else if (y >= height - margin) data.y[i] = height - margin - 1;
   };
 
   drawPlayerGraphics = createActorGraphics(
