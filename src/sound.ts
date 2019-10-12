@@ -74,7 +74,9 @@ export const setVolume = (vol: number) => {
 export const playGunSound = () => {
   if (!gunSound.isPlaying()) gunSound.play();
 };
-export const stopGunSound = () => gunSound.stop();
+export const stopGunSound = () => {
+  if (gunSound.isPlaying()) gunSound.stop();
+};
 
 const playRestart = (sound: p5.SoundFile) => {
   if (sound.isPlaying()) sound.stop();
