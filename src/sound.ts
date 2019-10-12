@@ -21,9 +21,15 @@ export const loadSounds = (
   }
 ) => {
   /* eslint-disable @typescript-eslint/no-explicit-any */
-  const p5Sound = (p as any) as p5.SoundFile;
+  const p5Any = p as any;
+  const p5Sound = p5Any as p5.SoundFile;
+
+  p5Any.soundFormats("ogg", "mp3");
+
   music = p5Sound.loadSound(paths.music);
   music.setLoop(true);
+
+  p5Any.soundFormats("wav");
 
   gunSound = p5Sound.loadSound(paths.gunSound);
   gunSound.setLoop(true);
