@@ -320,7 +320,7 @@ onSetup.push(p => {
     maxLife: 1
   };
 
-  const particleColor = p.color(128);
+  const particleColor = p.color(160, 156, 152);
   const runParticle: Actor.RunCallback = (data, i) => {
     const progressRatio = data.frameCount[i] / 45;
     data.scaleFactor[i] = 1 - Easing.easeInQuad(progressRatio);
@@ -332,7 +332,7 @@ onSetup.push(p => {
   particles = enemyParameters.map(param => {
     return {
       run: runParticle,
-      draw: createActorGraphics(param, 20, particleColor),
+      draw: createActorGraphics(param, 32, particleColor),
       collisionDistance: 0,
       maxLife: 0
     };
