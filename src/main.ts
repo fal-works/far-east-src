@@ -13,7 +13,7 @@ import {
 
 import { HTML_ELEMENT, LOGICAL_CANVAS_SIZE } from "./settings";
 
-import { setJpFont, setEnFont, enFont } from "./global";
+import * as Fonts from "./fonts";
 import { loadSounds, setVolume } from "./sound";
 import * as Game from "./game";
 
@@ -26,8 +26,8 @@ let gameIsStarted = false;
 // ---- reset & initialize ----
 
 const prelaod = (): void => {
-  p.loadFont("assets/NotoSerifJP-Medium-subset.otf", setJpFont);
-  p.loadFont("assets/NotoSerifJP-Bold-subset.otf", setEnFont);
+  p.loadFont("assets/NotoSerifJP-Medium-subset.otf", Fonts.setJp);
+  p.loadFont("assets/NotoSerifJP-Bold-subset.otf", Fonts.setEn);
 
   loadSounds(p, {
     music: "assets/WELCOMEB4CK.ogg",
@@ -77,7 +77,7 @@ const initialize = (): void => {
   drawBackground = () => replaceCanvasPixels(backgroundPixels);
 
   p.imageMode(p.CENTER);
-  p.textFont(enFont);
+  p.textFont(Fonts.en);
 
   initializeVolumeSlider();
 
@@ -89,7 +89,7 @@ const initialize = (): void => {
 const drawInstruction = () => {
   p.push();
 
-  p.textFont(enFont, 24);
+  p.textFont(Fonts.en, 24);
   p.textAlign(p.LEFT);
 
   p.text("ARROW / WASD :", 160, 500);
@@ -107,7 +107,7 @@ const drawSketch = (): void => {
 
   if (!gameIsStarted) drawInstruction();
 
-  p.textFont(enFont, 16);
+  p.textFont(Fonts.en, 16);
   p.textAlign(p.LEFT);
   p.text("VOL", 10, canvas.logicalSize.height - 23);
 };

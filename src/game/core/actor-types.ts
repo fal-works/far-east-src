@@ -8,7 +8,7 @@ import {
   MoveKeys,
   canvas
 } from "@fal-works/p5-extension";
-import { jpFont } from "../../global";
+import * as Fonts from "../../fonts";
 import * as Actor from "./actor";
 import * as GameCore from "./game-core";
 import * as Sound from "../../sound";
@@ -89,7 +89,7 @@ const createCharacterGraphics = (
   g.rotate(param.dir * Math2.HALF_PI);
   if (param.flip) g.scale(-1, 1);
   g.fill(color);
-  g.textFont(jpFont, 0.8 * size);
+  g.textFont(Fonts.jp, 0.8 * size);
   g.textAlign(p.CENTER, p.CENTER);
   g.text(param.char, 0, -0.2 * size);
   g.pop();
