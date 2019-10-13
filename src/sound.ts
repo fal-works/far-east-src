@@ -1,7 +1,7 @@
 import p5 from "p5";
 import "p5/lib/addons/p5.sound";
 
-import { ENABLE_MUSIC } from "./settings";
+import { ENABLE_MUSIC, ASSETS_DIRECTORY_PATH as ASSETS } from "./settings";
 
 let volume = 0;
 let music: p5.SoundFile;
@@ -11,9 +11,16 @@ let preAppearanceSound: p5.SoundFile;
 let appearanceSound: p5.SoundFile;
 let damageSound: p5.SoundFile;
 
-export const loadSounds = (
+const createLoadFile = (p: p5) => {
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+  const p5Sound = (p as any) as p5.SoundFile;
+
+  return (file: string): p5.SoundFile => p5Sound.loadSound(`${ASSETS}/${file}`);
+};
+
+export const load = (
   p: p5,
-  paths: {
+  files: {
     music: string;
     gunSound: string;
     bombSound: string;
@@ -22,31 +29,31 @@ export const loadSounds = (
     damageSound: string;
   }
 ) => {
-  /* eslint-disable @typescript-eslint/no-explicit-any */
-  const p5Any = p as any;
-  const p5Sound = p5Any as p5.SoundFile;
+  const loadFile = createLoadFile(p);
+
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+  const pAny = p as any;
 
   if (ENABLE_MUSIC) {
-    p5Any.soundFormats("ogg", "mp3");
+    pAny.soundFormats("ogg", "mp3");
 
-    music = p5Sound.loadSound(paths.music);
+    music = loadFile(files.music);
     music.setLoop(true);
   }
 
-  p5Any.soundFormats("wav");
+  pAny.soundFormats("wav");
 
-  gunSound = p5Sound.loadSound(paths.gunSound);
+  gunSound = loadFile(files.gunSound);
   gunSound.setLoop(true);
 
-  bombSound = p5Sound.loadSound(paths.bombSound);
-  preAppearanceSound = p5Sound.loadSound(paths.preAppearanceSound);
-  appearanceSound = p5Sound.loadSound(paths.appearanceSound);
-  damageSound = p5Sound.loadSound(paths.damageSound);
+  bombSound = loadFile(files.bombSound);
+  preAppearanceSound = loadFile(files.preAppearanceSound);
+  appearanceSound = loadFile(files.appearanceSound);
+  damageSound = loadFile(files.damageSound);
 
   const tmpDiv = p.createDiv();
   tmpDiv.position(0, 0);
-  (p as any).userStartAudio().then(() => tmpDiv.remove());
-  /* eslint-enable */
+  pAny.userStartAudio().then(() => tmpDiv.remove());
 };
 
 const playMusic = () => {

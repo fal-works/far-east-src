@@ -18,7 +18,7 @@ import {
 } from "./settings";
 
 import * as Fonts from "./fonts";
-import { loadSounds, setVolume } from "./sound";
+import * as Sounds from "./sound";
 import * as Game from "./game";
 
 // ---- variables | functions ----
@@ -30,16 +30,18 @@ let gameIsStarted = false;
 // ---- reset & initialize ----
 
 const prelaod = (): void => {
-  p.loadFont("assets/NotoSerifJP-Medium-subset.otf", Fonts.setJp);
-  p.loadFont("assets/NotoSerifJP-Bold-subset.otf", Fonts.setEn);
+  Fonts.load(p, {
+    jp: "NotoSerifJP-Medium-subset.otf",
+    en: "NotoSerifJP-Bold-subset.otf"
+  });
 
-  loadSounds(p, {
-    music: "assets/WELCOMEB4CK.ogg",
-    gunSound: "assets/submachinegun1_edit.wav",
-    bombSound: "assets/bomb2_edit.wav",
-    preAppearanceSound: "assets/enemy-advent1.wav",
-    appearanceSound: "assets/punch-high2.wav",
-    damageSound: "assets/cannon1_edit.wav"
+  Sounds.load(p, {
+    music: "WELCOMEB4CK.ogg",
+    gunSound: "submachinegun1_edit.wav",
+    bombSound: "bomb2_edit.wav",
+    preAppearanceSound: "enemy-advent1.wav",
+    appearanceSound: "punch-high2.wav",
+    damageSound: "cannon1_edit.wav"
   });
 };
 
@@ -49,7 +51,7 @@ const reset = (): void => {
 
 const updateVolume = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  setVolume(((volumeSlider.value() as any) as number) * 0.01);
+  Sounds.setVolume(((volumeSlider.value() as any) as number) * 0.01);
 };
 
 const initializeVolumeSlider = () => {

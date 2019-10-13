@@ -27,3 +27,8 @@ export const ENABLE_MUSIC = true;
  * If canvas should be scaled so that it fits to the parent HTML element.
  */
 export const ENABLE_CANVAS_SCALING = true;
+
+/**
+ * The directory path of assets.
+ */
+export const ASSETS_DIRECTORY_PATH = "assets";
