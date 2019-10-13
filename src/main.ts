@@ -11,7 +11,11 @@ import {
   Mouse
 } from "@fal-works/p5-extension";
 
-import { HTML_ELEMENT, LOGICAL_CANVAS_SIZE } from "./settings";
+import {
+  HTML_ELEMENT,
+  LOGICAL_CANVAS_SIZE,
+  ENABLE_CANVAS_SCALING
+} from "./settings";
 
 import * as Fonts from "./fonts";
 import { loadSounds, setVolume } from "./sound";
@@ -163,5 +167,6 @@ startSketch({
   htmlElement: HTML_ELEMENT,
   logicalCanvasSize: LOGICAL_CANVAS_SIZE,
   initialize,
-  setP5Methods
+  setP5Methods,
+  fittingOption: ENABLE_CANVAS_SCALING ? undefined : null
 });

@@ -22,3 +22,8 @@ export const LOGICAL_CANVAS_SIZE: RectangleSize.Unit = {
  * If music should be enabled.
  */
 export const ENABLE_MUSIC = true;
+
+/**
+ * If canvas should be scaled so that it fits to the parent HTML element.
+ */
+export const ENABLE_CANVAS_SCALING = true;
