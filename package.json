@@ -1,7 +1,7 @@
 {
   "name": "far-east",
   "description": "A simple shmup with graphics generated from Kanji characters.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "FAL",
   "dependencies": {
     "@fal-works/creative-coding-core": "0.1.7",

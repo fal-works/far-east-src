@@ -6,7 +6,7 @@ import cleanup from "rollup-plugin-cleanup";
 
 const repositoryURL = "https://github.com/fal-works/far-east-src";
 const title = "Far East";
-const version = "0.1.0";
+const version = "0.1.1";
 const bundleFalWorksLibraries = true;
 const additionalBannerComment = `
 /**
